@@ -11,7 +11,7 @@ namespace App\Http\Controllers;
 use App\Operations\v1\CollegeOperation;
 use Illuminate\Http\Request;
 
-class CollegeController
+class CollegeController extends Controller
 {
     private $_college;
 

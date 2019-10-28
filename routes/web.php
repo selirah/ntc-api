@@ -30,6 +30,27 @@ $router->group(['prefix' => 'api/v1'], function ($router) {
         $router->get('view', 'CollegeController@view');
     });
 
+    $router->group(['prefix' => 'staff-category', 'middleware' => 'auth'], function ($router) {
+        $router->post('add', 'StaffCategoryController@add');
+        $router->put('update/{id}', 'StaffCategoryController@update');
+        $router->get('get', 'StaffCategoryController@get');
+        $router->get('view', 'StaffCategoryController@view');
+    });
+
+    $router->group(['prefix' => 'staff-position', 'middleware' => 'auth'], function ($router) {
+        $router->post('add', 'StaffPositionController@add');
+        $router->put('update/{id}', 'StaffPositionController@update');
+        $router->get('get', 'StaffPositionController@get');
+        $router->get('view', 'StaffPositionController@view');
+    });
+
+    $router->group(['prefix' => 'programmes', 'middleware' => 'auth'], function ($router) {
+        $router->post('add', 'ProgrammeController@add');
+        $router->put('update/{id}', 'ProgrammeController@update');
+        $router->get('get', 'ProgrammeController@get');
+        $router->get('view', 'ProgrammeController@view');
+    });
+
 });
 
 

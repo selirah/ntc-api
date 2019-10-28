@@ -18,8 +18,8 @@ class CreateSettingsTable extends Migration
             $table->integer('college_id')->index();
             $table->string('academic_year', 20);
             $table->tinyInteger('semester');
-            $table->decimal('fee_percentage_freshers', 3, 2)->default(100.00);
-            $table->decimal('fee_percentage_continuing', 3, 2)->default(100.00);
+            $table->decimal('fee_percentage_freshers', 10, 2)->default(100.00);
+            $table->decimal('fee_percentage_continuing', 10, 2)->default(100.00);
             $table->date('exam_start')->nullable();
             $table->date('exam_end')->nullable();
             $table->date('results_upload_start')->nullable();

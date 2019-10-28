@@ -121,7 +121,7 @@ class CollegeOperation implements CollegeInterface
         }
 
         try {
-            // update institution
+            // update college
             $payload = [
                 'name' => $this->name,
                 'region' => $this->region,
@@ -141,7 +141,7 @@ class CollegeOperation implements CollegeInterface
                 'college' => $college
             ];
 
-            return ['response' => $response, 'code' => 200];
+            return ['response' => $response, 'code' => 201];
 
         } catch (\Exception $e) {
             exit($e->getMessage());

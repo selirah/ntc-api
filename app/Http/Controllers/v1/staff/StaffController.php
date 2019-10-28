@@ -9,7 +9,7 @@
 namespace App\Http\Controllers;
 
 
-class StaffController
+class StaffController extends Controller
 {
 
 }
