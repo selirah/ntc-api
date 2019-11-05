@@ -51,6 +51,26 @@ $router->group(['prefix' => 'api/v1'], function ($router) {
         $router->get('view', 'ProgrammeController@view');
     });
 
+    $router->group(['prefix' => 'settings', 'middleware' => 'auth'], function ($router) {
+        $router->post('add-update', 'SettingController@addOrUpdate');
+        $router->get('get', 'SettingController@get');
+        $router->get('view', 'SettingController@view');
+    });
+
+    $router->group(['prefix' => 'staff', 'middleware' => 'auth'], function ($router) {
+        $router->post('add', 'StaffController@add');
+        $router->put('update/{id}', 'StaffController@update');
+        $router->get('get', 'StaffController@get');
+        $router->get('view', 'StaffController@view');
+        $router->get('get-staff-id', 'StaffController@getWithStaffID');
+        $router->get('get-staff-category', 'StaffController@getWithCategory');
+        $router->get('get-staff-position', 'StaffController@getWithPosition');
+        $router->get('get-staff-category-position', 'StaffController@getWithCategoryAndPosition');
+        $router->get('get-staff-certificate', 'StaffController@getWithCertificate');
+        $router->delete('delete/{id}', 'StaffController@delete');
+        $router->post('import', 'StaffController@import');
+    });
+
 });
 
 
