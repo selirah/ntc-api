@@ -10,13 +10,13 @@ namespace App\Operations\v1;
 
 
 use App\Helpers\Helper;
-use App\Interfaces\v1\CollegeInterface;
+use App\Interfaces\v1\ICollege;
 use App\Models\v1\College;
 use App\Models\v1\User;
 use App\Validations\v1\CollegeValidation;
 use Carbon\Carbon;
 
-class CollegeOperation implements CollegeInterface
+class CollegeOperation implements ICollege
 {
     private $_college;
     private $_user;

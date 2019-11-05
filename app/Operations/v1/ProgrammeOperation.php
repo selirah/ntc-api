@@ -8,13 +8,13 @@
 
 namespace App\Operations\v1;
 
-use App\Interfaces\v1\ProgrammeInterface;
+use App\Interfaces\v1\IProgramme;
 use App\Models\v1\Programme;
 use App\Validations\v1\ProgrammeValidation;
 use Carbon\Carbon;
 
 
-class ProgrammeOperation implements ProgrammeInterface
+class ProgrammeOperation implements IProgramme
 {
     private $_programme;
     private $_validation;

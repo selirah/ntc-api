@@ -8,12 +8,12 @@
 
 namespace App\Operations\v1;
 
-use App\Interfaces\v1\SettingInterface;
+use App\Interfaces\v1\ISetting;
 use App\Models\v1\Setting;
 use App\Validations\v1\SettingValidation;
 use Carbon\Carbon;
 
-class SettingOperation implements SettingInterface
+class SettingOperation implements ISetting
 {
     private $_setting;
     private $_validation;

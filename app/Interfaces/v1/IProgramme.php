@@ -9,7 +9,7 @@
 namespace App\Interfaces\v1;
 
 
-interface ProgrammeInterface
+interface IProgramme
 {
 
     public function add();

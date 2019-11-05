@@ -9,17 +9,14 @@
 namespace App\Operations\v1;
 
 use App\Helpers\Helper;
-use App\Interfaces\v1\StaffInterface;
+use App\Interfaces\v1\IStaff;
 use App\Models\v1\Staff;
 use App\Validations\v1\StaffValidation;
 use Carbon\Carbon;
-use PhpOffice\PhpSpreadsheet\Cell\DataType;
 use PhpOffice\PhpSpreadsheet\IOFactory;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 
-class StaffOperation implements StaffInterface
+class StaffOperation implements IStaff
 {
     private $_staff;
     private $_validation;

@@ -8,13 +8,13 @@
 
 namespace App\Operations\v1;
 
-use App\Interfaces\v1\StaffCategoryInterface;
+use App\Interfaces\v1\IStaffCategory;
 use App\Models\v1\StaffCategory;
 use App\Validations\v1\StaffCategoryValidation;
 use Carbon\Carbon;
 
 
-class StaffCategoryOperation implements StaffCategoryInterface
+class StaffCategoryOperation implements IStaffCategory
 {
     private $_staffCategory;
     private $_validation;

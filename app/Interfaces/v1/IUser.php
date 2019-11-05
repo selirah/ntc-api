@@ -11,7 +11,7 @@ namespace App\Interfaces\v1;
 use Illuminate\Http\Request;
 
 
-interface UserInterface
+interface IUser
 {
     public function registerUser();
 

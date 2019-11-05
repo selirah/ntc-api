@@ -2,18 +2,16 @@
 /**
  * Created by PhpStorm.
  * User: selirah
- * Date: 10/26/2019
- * Time: 3:21 PM
+ * Date: 10/28/2019
+ * Time: 11:04 AM
  */
 
 namespace App\Interfaces\v1;
 
 
-interface StaffCategoryInterface
+interface ISetting
 {
-    public function add();
-
-    public function update();
+    public function addOrUpdate();
 
     public function get();
 

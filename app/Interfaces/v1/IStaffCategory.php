@@ -2,14 +2,14 @@
 /**
  * Created by PhpStorm.
  * User: selirah
- * Date: 10/28/2019
- * Time: 9:38 AM
+ * Date: 10/26/2019
+ * Time: 3:21 PM
  */
 
 namespace App\Interfaces\v1;
 
 
-interface StaffPositionInterface
+interface IStaffCategory
 {
     public function add();
 

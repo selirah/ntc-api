@@ -8,13 +8,13 @@
 
 namespace App\Operations\v1;
 
-use App\Interfaces\v1\StaffPositionInterface;
+use App\Interfaces\v1\IStaffPosition;
 use App\Models\v1\StaffPosition;
 use App\Validations\v1\StaffPositionValidation;
 use Carbon\Carbon;
 
 
-class StaffPositionOperation implements StaffPositionInterface
+class StaffPositionOperation implements IStaffPosition
 {
     private $_staffPosition;
     private $_validation;

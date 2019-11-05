@@ -3,15 +3,17 @@
  * Created by PhpStorm.
  * User: selirah
  * Date: 10/28/2019
- * Time: 11:04 AM
+ * Time: 9:38 AM
  */
 
 namespace App\Interfaces\v1;
 
 
-interface SettingInterface
+interface IStaffPosition
 {
-    public function addOrUpdate();
+    public function add();
+
+    public function update();
 
     public function get();
 

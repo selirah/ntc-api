@@ -9,7 +9,7 @@
 namespace App\Interfaces\v1;
 
 
-interface CollegeInterface
+interface ICollege
 {
     public function get();
 

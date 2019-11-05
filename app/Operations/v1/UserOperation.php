@@ -10,7 +10,7 @@ namespace App\Operations\v1;
 
 use App\Helpers\Helper;
 use App\Models\v1\User;
-use App\Interfaces\v1\UserInterface;
+use App\Interfaces\v1\IUser;
 use App\Models\v1\Code;
 use App\Models\v1\College;
 use App\Validations\v1\UserValidation;
@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 
-class UserOperation implements UserInterface
+class UserOperation implements IUser
 {
     private $_user;
     private $_code;

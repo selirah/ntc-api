@@ -9,7 +9,7 @@
 namespace App\Interfaces\v1;
 
 
-interface StaffInterface
+interface IStaff
 {
     public function add();
 
