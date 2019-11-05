@@ -8,14 +8,14 @@
 
 namespace App\Validations\v1;
 
-use App\Operations\v1\SettingOperation;
+use App\Operations\v1\OSetting;
 
 
-class SettingValidation
+class VSetting
 {
     private $_setting;
 
-    public function __construct(SettingOperation $settingOperation)
+    public function __construct(OSetting $settingOperation)
     {
         $this->_setting = $settingOperation;
     }

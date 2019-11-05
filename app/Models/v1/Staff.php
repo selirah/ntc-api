@@ -49,7 +49,7 @@ class Staff extends Model
         $query = $this->_connectTable()->where($this->table . '.id', '=', $id)
             ->join('staff_category', $this->table . '.staff_category', '=', 'staff_category.id')
             ->join('staff_position', $this->table . '.staff_position', '=', 'staff_position.id')
-            ->select('staff.*', 'staff_category.category', 'staff_position.position')
+            ->select($this->table . '.*', 'staff_category.category', 'staff_position.position')
             ->first();
         return $query;
     }
@@ -59,7 +59,7 @@ class Staff extends Model
         $query = $this->_connectTable()->where($this->table . '.staff_id', '=', $id)
             ->join('staff_category', $this->table . '.staff_category', '=', 'staff_category.id')
             ->join('staff_position', $this->table . '.staff_position', '=', 'staff_position.id')
-            ->select('staff.*', 'staff_category.category', 'staff_position.position')
+            ->select($this->table . '.*', 'staff_category.category', 'staff_position.position')
             ->first();
         return $query;
     }
@@ -70,7 +70,7 @@ class Staff extends Model
             ->where($this->table . '.college_id', '=', $collegeId)
             ->join('staff_category', $this->table . '.staff_category', '=', 'staff_category.id')
             ->join('staff_position', $this->table . '.staff_position', '=', 'staff_position.id')
-            ->select('staff.*', 'staff_category.category', 'staff_position.position')
+            ->select($this->table . '.*', 'staff_category.category', 'staff_position.position')
             ->orderByDesc('salary')
             ->get();
         return $query;
@@ -82,7 +82,7 @@ class Staff extends Model
             ->where($this->table . '.staff_category', '=', $categoryId)
             ->join('staff_category', $this->table . '.staff_category', '=', 'staff_category.id')
             ->join('staff_position', $this->table . '.staff_position', '=', 'staff_position.id')
-            ->select('staff.*', 'staff_category.category', 'staff_position.position')
+            ->select($this->table . '.*', 'staff_category.category', 'staff_position.position')
             ->orderByDesc('salary')
             ->get();
         return $query;
@@ -94,7 +94,7 @@ class Staff extends Model
             ->where($this->table . '.staff_position', '=', $positionId)
             ->join('staff_category', $this->table . '.staff_category', '=', 'staff_category.id')
             ->join('staff_position', $this->table . '.staff_position', '=', 'staff_position.id')
-            ->select('staff.*', 'staff_category.category', 'staff_position.position')
+            ->select($this->table . '.*', 'staff_category.category', 'staff_position.position')
             ->orderByDesc('salary')
             ->get();
         return $query;
@@ -107,7 +107,7 @@ class Staff extends Model
             ->where($this->table . '.staff_position', '=', $positionId)
             ->join('staff_category', $this->table . '.staff_category', '=', 'staff_category.id')
             ->join('staff_position', $this->table . '.staff_position', '=', 'staff_position.id')
-            ->select('staff.*', 'staff_category.category', 'staff_position.position')
+            ->select($this->table . '.*', 'staff_category.category', 'staff_position.position')
             ->orderByDesc('salary')
             ->get();
         return $query;
@@ -119,6 +119,7 @@ class Staff extends Model
             ->where($this->table . '.certificate', '=', $certificate)
             ->join('staff_category', $this->table . '.staff_category', '=', 'staff_category.id')
             ->join('staff_position', $this->table . '.staff_position', '=', 'staff_position.id')
+            ->select($this->table . '.*', 'staff_category.category', 'staff_position.position')
             ->orderByDesc('salary')
             ->get();
         return $query;

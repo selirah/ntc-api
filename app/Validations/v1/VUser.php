@@ -8,13 +8,13 @@
 
 namespace App\Validations\v1;
 
-use App\Operations\v1\UserOperation;
+use App\Operations\v1\OUser;
 
-class UserValidation
+class VUser
 {
     private $_userOperation;
 
-    public function __construct(UserOperation $userOperation)
+    public function __construct(OUser $userOperation)
     {
         $this->_userOperation = $userOperation;
     }

@@ -2,38 +2,37 @@
 /**
  * Created by PhpStorm.
  * User: selirah
- * Date: 10/26/2019
- * Time: 3:21 PM
+ * Date: 10/28/2019
+ * Time: 9:39 AM
  */
 
 namespace App\Operations\v1;
 
-use App\Interfaces\v1\IStaffCategory;
-use App\Models\v1\StaffCategory;
-use App\Validations\v1\StaffCategoryValidation;
+use App\Interfaces\v1\IStaffPosition;
+use App\Models\v1\StaffPosition;
+use App\Validations\v1\VStaffPosition;
 use Carbon\Carbon;
 
 
-class StaffCategoryOperation implements IStaffCategory
+class OStaffPosition implements IStaffPosition
 {
-    private $_staffCategory;
+    private $_staffPosition;
     private $_validation;
 
-    public $categoryId;
+    public $positionId;
     public $collegeId;
-    public $category;
+    public $position;
 
-
-    public function __construct(StaffCategory $staffCategory)
+    public function __construct(StaffPosition $staffPosition)
     {
-        $this->_staffCategory = $staffCategory;
+        $this->_staffPosition = $staffPosition;
     }
 
     public function add()
     {
-        $this->_validation = new StaffCategoryValidation($this);
-        // validate category inputs
-        $validation = $this->_validation->__validateStaffCategoryInputs();
+        $this->_validation = new VStaffPosition($this);
+        // validate position inputs
+        $validation = $this->_validation->__validateStaffPositionInputs();
         if ($validation !== true) {
             return $validation;
         }
@@ -43,17 +42,17 @@ class StaffCategoryOperation implements IStaffCategory
             // save
             $payload = [
                 'college_id' => $this->collegeId,
-                'category' => $this->category,
+                'position' => $this->position,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ];
 
-            $this->categoryId = $this->_staffCategory->_save($payload);
+            $this->positionId = $this->_staffPosition->_save($payload);
 
-            $payload['id'] = $this->categoryId;
+            $payload['id'] = $this->positionId;
 
             $response = [
-                'category' => $payload
+                'position' => $payload
             ];
 
             return ['response' => $response, 'code' => 201];
@@ -63,31 +62,30 @@ class StaffCategoryOperation implements IStaffCategory
         } catch (\Exception $e) {
             exit($e->getMessage());
         }
-
     }
 
     public function update()
     {
-        $this->_validation = new StaffCategoryValidation($this);
-        // validate category inputs
-        $validation = $this->_validation->__validateStaffCategoryInputs();
+        $this->_validation = new VStaffPosition($this);
+        // validate position inputs
+        $validation = $this->_validation->__validateStaffPositionInputs();
         if ($validation !== true) {
             return $validation;
         }
 
         try {
-            // update category
+            // update position
             $payload = [
-                'category' => $this->category,
+                'position' => $this->position,
                 'updated_at' => Carbon::now()
             ];
 
-            $this->_staffCategory->_update($this->categoryId, $payload);
+            $this->_staffPosition->_update($this->positionId, $payload);
 
-            $category = $this->_staffCategory->_get($this->categoryId);
+            $category = $this->_staffPosition->_get($this->positionId);
 
             $response = [
-                'category' => $category
+                'position' => $category
             ];
 
             return ['response' => $response, 'code' => 201];
@@ -102,10 +100,10 @@ class StaffCategoryOperation implements IStaffCategory
         try {
 
             // get
-            $category = $this->_staffCategory->_get($this->categoryId);
+            $position = $this->_staffPosition->_get($this->positionId);
 
             $response = [
-                'category' => ($category) ? $category : []
+                'position' => ($position) ? $position : []
             ];
 
             return ['response' => $response, 'code' => 200];
@@ -119,11 +117,11 @@ class StaffCategoryOperation implements IStaffCategory
     {
         try {
 
-            // get category list
-            $categories = $this->_staffCategory->_view($this->collegeId);
+            // get position list
+            $positions = $this->_staffPosition->_view($this->collegeId);
 
             $response = [
-                'categories' => ($categories->isNotEmpty()) ? $categories : []
+                'positions' => ($positions->isNotEmpty()) ? $positions : []
             ];
 
             return ['response' => $response, 'code' => 200];

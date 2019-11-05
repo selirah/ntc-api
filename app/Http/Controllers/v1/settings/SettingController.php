@@ -8,7 +8,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Operations\v1\SettingOperation;
+use App\Operations\v1\OSetting;
 use Illuminate\Http\Request;
 
 
@@ -16,7 +16,7 @@ class SettingController extends Controller
 {
     private $_setting;
 
-    public function __construct(SettingOperation $settingOperation)
+    public function __construct(OSetting $settingOperation)
     {
         $this->_setting = $settingOperation;
     }

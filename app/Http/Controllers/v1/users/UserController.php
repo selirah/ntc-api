@@ -8,7 +8,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Operations\v1\UserOperation;
+use App\Operations\v1\OUser;
 use Illuminate\Http\Request;
 
 
@@ -16,7 +16,7 @@ class UserController extends Controller
 {
     private $_user;
 
-    public function __construct(UserOperation $userOperation)
+    public function __construct(OUser $userOperation)
     {
         $this->_user = $userOperation;
     }

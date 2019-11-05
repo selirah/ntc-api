@@ -9,13 +9,13 @@
 namespace App\Validations\v1;
 
 
-use App\Operations\v1\CollegeOperation;
+use App\Operations\v1\OCollege;
 
-class CollegeValidation
+class VCollege
 {
     private $_college;
 
-    public function __construct(CollegeOperation $collegeOperation)
+    public function __construct(OCollege $collegeOperation)
     {
         $this->_college = $collegeOperation;
     }

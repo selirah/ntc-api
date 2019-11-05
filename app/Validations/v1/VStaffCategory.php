@@ -9,13 +9,13 @@
 namespace App\Validations\v1;
 
 
-use App\Operations\v1\StaffCategoryOperation;
+use App\Operations\v1\OStaffCategory;
 
-class StaffCategoryValidation
+class VStaffCategory
 {
     private $_staffCategory;
 
-    public function __construct(StaffCategoryOperation $staffCategoryOperation)
+    public function __construct(OStaffCategory $staffCategoryOperation)
     {
         $this->_staffCategory = $staffCategoryOperation;
     }

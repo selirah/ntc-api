@@ -8,14 +8,14 @@
 
 namespace App\Validations\v1;
 
-use App\Operations\v1\StaffPositionOperation;
+use App\Operations\v1\OStaffPosition;
 
 
-class StaffPositionValidation
+class VStaffPosition
 {
     private $_staffPosition;
 
-    public function __construct(StaffPositionOperation $staffPositionOperation)
+    public function __construct(OStaffPosition $staffPositionOperation)
     {
         $this->_staffPosition = $staffPositionOperation;
     }

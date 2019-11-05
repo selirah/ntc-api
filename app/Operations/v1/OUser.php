@@ -13,13 +13,13 @@ use App\Models\v1\User;
 use App\Interfaces\v1\IUser;
 use App\Models\v1\Code;
 use App\Models\v1\College;
-use App\Validations\v1\UserValidation;
+use App\Validations\v1\VUser;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 
-class UserOperation implements IUser
+class OUser implements IUser
 {
     private $_user;
     private $_code;
@@ -53,7 +53,7 @@ class UserOperation implements IUser
 
     public function registerUser()
     {
-        $this->_validation = new UserValidation($this);
+        $this->_validation = new VUser($this);
         // Validate user inputs
         $validation = $this->_validation->__validateUserRegistration();
 
@@ -132,7 +132,7 @@ class UserOperation implements IUser
 
     public function loginUser(Request $request)
     {
-        $this->_validation = new UserValidation($this);
+        $this->_validation = new VUser($this);
         // Validate user inputs
         $validation = $this->_validation->__validateUserLogin();
         if ($validation !== true) {
@@ -259,7 +259,7 @@ class UserOperation implements IUser
 
     public function activateUser()
     {
-        $this->_validation = new UserValidation($this);
+        $this->_validation = new VUser($this);
         // Validate user inputs
         $validation = $this->_validation->__validateUserActivation();
         if ($validation !== true) {
@@ -320,7 +320,7 @@ class UserOperation implements IUser
 
     public function resendActivationCode()
     {
-        $this->_validation = new UserValidation($this);
+        $this->_validation = new VUser($this);
         // Validate user inputs
         $validation = $this->_validation->__validateUserCodeResend();
         if ($validation !== true) {
@@ -373,7 +373,7 @@ class UserOperation implements IUser
 
     public function resetPassword()
     {
-        $this->_validation = new UserValidation($this);
+        $this->_validation = new VUser($this);
         // Validate user inputs
         $validation = $this->_validation->__validateUserCodeResend();
         if ($validation !== true) {
@@ -412,7 +412,7 @@ class UserOperation implements IUser
 
     public function changePassword(Request $request)
     {
-        $this->_validation = new UserValidation($this);
+        $this->_validation = new VUser($this);
         // Validate user inputs
         $validation = $this->_validation->__validateUserPassword();
         if ($validation !== true) {
@@ -449,7 +449,7 @@ class UserOperation implements IUser
 
     public function updateUserProfile(Request $request)
     {
-        $this->_validation = new UserValidation($this);
+        $this->_validation = new VUser($this);
         // Validate user inputs
         $validation = $this->_validation->__validateUserProfile();
         if ($validation !== true) {
@@ -508,7 +508,7 @@ class UserOperation implements IUser
 
     public function createUser(Request $request)
     {
-        $this->_validation = new UserValidation($this);
+        $this->_validation = new VUser($this);
         // Validate user inputs
         $validation = $this->_validation->__validateUserProfile();
         if ($validation !== true) {
@@ -571,7 +571,7 @@ class UserOperation implements IUser
 
     public function updateUser(Request $request)
     {
-        $this->_validation = new UserValidation($this);
+        $this->_validation = new VUser($this);
         // Validate user inputs
         $validation = $this->_validation->__validateUserProfile();
         if ($validation !== true) {

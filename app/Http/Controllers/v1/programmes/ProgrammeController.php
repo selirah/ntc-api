@@ -8,7 +8,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Operations\v1\ProgrammeOperation;
+use App\Operations\v1\OProgramme;
 use Illuminate\Http\Request;
 
 
@@ -16,7 +16,7 @@ class ProgrammeController extends Controller
 {
     private $_programme;
 
-    public function __construct(ProgrammeOperation $programmeOperation)
+    public function __construct(OProgramme $programmeOperation)
     {
         $this->_programme = $programmeOperation;
     }

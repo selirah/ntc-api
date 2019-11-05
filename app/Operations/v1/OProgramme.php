@@ -3,36 +3,36 @@
  * Created by PhpStorm.
  * User: selirah
  * Date: 10/28/2019
- * Time: 9:39 AM
+ * Time: 10:22 AM
  */
 
 namespace App\Operations\v1;
 
-use App\Interfaces\v1\IStaffPosition;
-use App\Models\v1\StaffPosition;
-use App\Validations\v1\StaffPositionValidation;
+use App\Interfaces\v1\IProgramme;
+use App\Models\v1\Programme;
+use App\Validations\v1\VProgramme;
 use Carbon\Carbon;
 
 
-class StaffPositionOperation implements IStaffPosition
+class OProgramme implements IProgramme
 {
-    private $_staffPosition;
+    private $_programme;
     private $_validation;
 
-    public $positionId;
+    public $programmeId;
     public $collegeId;
-    public $position;
+    public $programme;
 
-    public function __construct(StaffPosition $staffPosition)
+    public function __construct(Programme $programme)
     {
-        $this->_staffPosition = $staffPosition;
+        $this->_programme = $programme;
     }
 
     public function add()
     {
-        $this->_validation = new StaffPositionValidation($this);
-        // validate position inputs
-        $validation = $this->_validation->__validateStaffPositionInputs();
+        $this->_validation = new VProgramme($this);
+        // validate programme inputs
+        $validation = $this->_validation->__validateProgrammeInputs();
         if ($validation !== true) {
             return $validation;
         }
@@ -42,22 +42,20 @@ class StaffPositionOperation implements IStaffPosition
             // save
             $payload = [
                 'college_id' => $this->collegeId,
-                'position' => $this->position,
+                'programme' => $this->programme,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ];
 
-            $this->positionId = $this->_staffPosition->_save($payload);
+            $this->programmeId = $this->_programme->_save($payload);
 
-            $payload['id'] = $this->positionId;
+            $payload['id'] = $this->programmeId;
 
             $response = [
-                'position' => $payload
+                'programme' => $payload
             ];
 
             return ['response' => $response, 'code' => 201];
-
-
 
         } catch (\Exception $e) {
             exit($e->getMessage());
@@ -66,26 +64,26 @@ class StaffPositionOperation implements IStaffPosition
 
     public function update()
     {
-        $this->_validation = new StaffPositionValidation($this);
-        // validate position inputs
-        $validation = $this->_validation->__validateStaffPositionInputs();
+        $this->_validation = new VProgramme($this);
+        // validate programme inputs
+        $validation = $this->_validation->__validateProgrammeInputs();
         if ($validation !== true) {
             return $validation;
         }
 
         try {
-            // update position
+            // update programme
             $payload = [
-                'position' => $this->position,
+                'programme' => $this->programme,
                 'updated_at' => Carbon::now()
             ];
 
-            $this->_staffPosition->_update($this->positionId, $payload);
+            $this->_programme->_update($this->programmeId, $payload);
 
-            $category = $this->_staffPosition->_get($this->positionId);
+            $programme = $this->_programme->_get($this->programmeId);
 
             $response = [
-                'position' => $category
+                'programme' => $programme
             ];
 
             return ['response' => $response, 'code' => 201];
@@ -100,10 +98,10 @@ class StaffPositionOperation implements IStaffPosition
         try {
 
             // get
-            $position = $this->_staffPosition->_get($this->positionId);
+            $programme = $this->_programme->_get($this->programmeId);
 
             $response = [
-                'position' => ($position) ? $position : []
+                'programme' => ($programme) ? $programme : []
             ];
 
             return ['response' => $response, 'code' => 200];
@@ -117,11 +115,11 @@ class StaffPositionOperation implements IStaffPosition
     {
         try {
 
-            // get position list
-            $positions = $this->_staffPosition->_view($this->collegeId);
+            // get programme list
+            $programmes = $this->_programme->_view($this->collegeId);
 
             $response = [
-                'positions' => ($positions->isNotEmpty()) ? $positions : []
+                'programmes' => ($programmes->isNotEmpty()) ? $programmes : []
             ];
 
             return ['response' => $response, 'code' => 200];

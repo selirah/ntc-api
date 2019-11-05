@@ -8,14 +8,14 @@
 
 namespace App\Validations\v1;
 
-use App\Operations\v1\StaffOperation;
+use App\Operations\v1\OStaff;
 
 
-class StaffValidation
+class VStaff
 {
     private $_staff;
 
-    public function __construct(StaffOperation $staffOperation)
+    public function __construct(OStaff $staffOperation)
     {
         $this->_staff = $staffOperation;
     }

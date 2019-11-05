@@ -8,7 +8,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Operations\v1\StaffPositionOperation;
+use App\Operations\v1\OStaffPosition;
 use Illuminate\Http\Request;
 
 
@@ -16,7 +16,7 @@ class StaffPositionController extends Controller
 {
     private $_position;
 
-    public function __construct(StaffPositionOperation $staffPositionOperation)
+    public function __construct(OStaffPosition $staffPositionOperation)
     {
         $this->_position = $staffPositionOperation;
     }

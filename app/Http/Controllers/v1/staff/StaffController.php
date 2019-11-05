@@ -8,7 +8,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Operations\v1\StaffOperation;
+use App\Operations\v1\OStaff;
 use Illuminate\Http\Request;
 
 
@@ -16,7 +16,7 @@ class StaffController extends Controller
 {
     private $_staff;
 
-    public function __construct(StaffOperation $staffOperation)
+    public function __construct(OStaff $staffOperation)
     {
         $this->_staff = $staffOperation;
     }

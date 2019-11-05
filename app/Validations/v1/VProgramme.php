@@ -8,14 +8,14 @@
 
 namespace App\Validations\v1;
 
-use App\Operations\v1\ProgrammeOperation;
+use App\Operations\v1\OProgramme;
 
 
-class ProgrammeValidation
+class VProgramme
 {
     private $_programme;
 
-    public function __construct(ProgrammeOperation $programmeOperation)
+    public function __construct(OProgramme $programmeOperation)
     {
         $this->_programme = $programmeOperation;
     }

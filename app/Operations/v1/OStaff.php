@@ -11,12 +11,12 @@ namespace App\Operations\v1;
 use App\Helpers\Helper;
 use App\Interfaces\v1\IStaff;
 use App\Models\v1\Staff;
-use App\Validations\v1\StaffValidation;
+use App\Validations\v1\VStaff;
 use Carbon\Carbon;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
 
-class StaffOperation implements IStaff
+class OStaff implements IStaff
 {
     private $_staff;
     private $_validation;
@@ -53,7 +53,7 @@ class StaffOperation implements IStaff
 
     public function add()
     {
-        $this->_validation = new StaffValidation($this);
+        $this->_validation = new VStaff($this);
         // validate
         $validation = $this->_validation->__validateStaffInputs();
         if ($validation !== true) {
@@ -101,7 +101,7 @@ class StaffOperation implements IStaff
 
     public function update()
     {
-        $this->_validation = new StaffValidation($this);
+        $this->_validation = new VStaff($this);
         // validate
         $validation = $this->_validation->__validateStaffInputs();
         if ($validation !== true) {
@@ -286,7 +286,7 @@ class StaffOperation implements IStaff
 
     public function import()
     {
-        $this->_validation = new StaffValidation($this);
+        $this->_validation = new VStaff($this);
         $validation = $this->_validation->__validateStaffImport();
 
         if ($validation !== true) {

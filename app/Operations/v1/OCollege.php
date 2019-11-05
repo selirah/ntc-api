@@ -13,10 +13,10 @@ use App\Helpers\Helper;
 use App\Interfaces\v1\ICollege;
 use App\Models\v1\College;
 use App\Models\v1\User;
-use App\Validations\v1\CollegeValidation;
+use App\Validations\v1\VCollege;
 use Carbon\Carbon;
 
-class CollegeOperation implements ICollege
+class OCollege implements ICollege
 {
     private $_college;
     private $_user;
@@ -58,7 +58,7 @@ class CollegeOperation implements ICollege
 
     public function add()
     {
-        $this->_validation = new CollegeValidation($this);
+        $this->_validation = new VCollege($this);
         // validate college inputs
         $validation = $this->_validation->__validateCollegeInputs();
         if ($validation !== true) {
@@ -113,7 +113,7 @@ class CollegeOperation implements ICollege
 
     public function update()
     {
-        $this->_validation = new CollegeValidation($this);
+        $this->_validation = new VCollege($this);
         // validate college inputs
         $validation = $this->_validation->__validateCollegeInputs();
         if ($validation !== true) {

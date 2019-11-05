@@ -10,10 +10,10 @@ namespace App\Operations\v1;
 
 use App\Interfaces\v1\ISetting;
 use App\Models\v1\Setting;
-use App\Validations\v1\SettingValidation;
+use App\Validations\v1\VSetting;
 use Carbon\Carbon;
 
-class SettingOperation implements ISetting
+class OSetting implements ISetting
 {
     private $_setting;
     private $_validation;
@@ -40,7 +40,7 @@ class SettingOperation implements ISetting
 
     public function addOrUpdate()
     {
-        $this->_validation = new SettingValidation($this);
+        $this->_validation = new VSetting($this);
         // validate settings inputs
         $validation = $this->_validation->__validateSettingsInputs();
 

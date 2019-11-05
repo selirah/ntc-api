@@ -8,7 +8,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Operations\v1\StaffCategoryOperation;
+use App\Operations\v1\OStaffCategory;
 use Illuminate\Http\Request;
 
 
@@ -16,7 +16,7 @@ class StaffCategoryController extends Controller
 {
     private $_category;
 
-    public function __construct(StaffCategoryOperation $staffCategoryOperation)
+    public function __construct(OStaffCategory $staffCategoryOperation)
     {
         $this->_category = $staffCategoryOperation;
     }

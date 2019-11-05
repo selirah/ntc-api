@@ -8,14 +8,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Operations\v1\CollegeOperation;
+use App\Operations\v1\OCollege;
 use Illuminate\Http\Request;
 
 class CollegeController extends Controller
 {
     private $_college;
 
-    public function __construct(CollegeOperation $collegeOperation)
+    public function __construct(OCollege $collegeOperation)
     {
         $this->_college = $collegeOperation;
     }

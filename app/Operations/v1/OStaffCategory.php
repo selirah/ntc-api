@@ -2,37 +2,38 @@
 /**
  * Created by PhpStorm.
  * User: selirah
- * Date: 10/28/2019
- * Time: 10:22 AM
+ * Date: 10/26/2019
+ * Time: 3:21 PM
  */
 
 namespace App\Operations\v1;
 
-use App\Interfaces\v1\IProgramme;
-use App\Models\v1\Programme;
-use App\Validations\v1\ProgrammeValidation;
+use App\Interfaces\v1\IStaffCategory;
+use App\Models\v1\StaffCategory;
+use App\Validations\v1\VStaffCategory;
 use Carbon\Carbon;
 
 
-class ProgrammeOperation implements IProgramme
+class OStaffCategory implements IStaffCategory
 {
-    private $_programme;
+    private $_staffCategory;
     private $_validation;
 
-    public $programmeId;
+    public $categoryId;
     public $collegeId;
-    public $programme;
+    public $category;
 
-    public function __construct(Programme $programme)
+
+    public function __construct(StaffCategory $staffCategory)
     {
-        $this->_programme = $programme;
+        $this->_staffCategory = $staffCategory;
     }
 
     public function add()
     {
-        $this->_validation = new ProgrammeValidation($this);
-        // validate programme inputs
-        $validation = $this->_validation->__validateProgrammeInputs();
+        $this->_validation = new VStaffCategory($this);
+        // validate category inputs
+        $validation = $this->_validation->__validateStaffCategoryInputs();
         if ($validation !== true) {
             return $validation;
         }
@@ -42,48 +43,51 @@ class ProgrammeOperation implements IProgramme
             // save
             $payload = [
                 'college_id' => $this->collegeId,
-                'programme' => $this->programme,
+                'category' => $this->category,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ];
 
-            $this->programmeId = $this->_programme->_save($payload);
+            $this->categoryId = $this->_staffCategory->_save($payload);
 
-            $payload['id'] = $this->programmeId;
+            $payload['id'] = $this->categoryId;
 
             $response = [
-                'programme' => $payload
+                'category' => $payload
             ];
 
             return ['response' => $response, 'code' => 201];
 
+
+
         } catch (\Exception $e) {
             exit($e->getMessage());
         }
+
     }
 
     public function update()
     {
-        $this->_validation = new ProgrammeValidation($this);
-        // validate programme inputs
-        $validation = $this->_validation->__validateProgrammeInputs();
+        $this->_validation = new VStaffCategory($this);
+        // validate category inputs
+        $validation = $this->_validation->__validateStaffCategoryInputs();
         if ($validation !== true) {
             return $validation;
         }
 
         try {
-            // update programme
+            // update category
             $payload = [
-                'programme' => $this->programme,
+                'category' => $this->category,
                 'updated_at' => Carbon::now()
             ];
 
-            $this->_programme->_update($this->programmeId, $payload);
+            $this->_staffCategory->_update($this->categoryId, $payload);
 
-            $programme = $this->_programme->_get($this->programmeId);
+            $category = $this->_staffCategory->_get($this->categoryId);
 
             $response = [
-                'programme' => $programme
+                'category' => $category
             ];
 
             return ['response' => $response, 'code' => 201];
@@ -98,10 +102,10 @@ class ProgrammeOperation implements IProgramme
         try {
 
             // get
-            $programme = $this->_programme->_get($this->programmeId);
+            $category = $this->_staffCategory->_get($this->categoryId);
 
             $response = [
-                'programme' => ($programme) ? $programme : []
+                'category' => ($category) ? $category : []
             ];
 
             return ['response' => $response, 'code' => 200];
@@ -115,11 +119,11 @@ class ProgrammeOperation implements IProgramme
     {
         try {
 
-            // get programme list
-            $programmes = $this->_programme->_view($this->collegeId);
+            // get category list
+            $categories = $this->_staffCategory->_view($this->collegeId);
 
             $response = [
-                'programmes' => ($programmes->isNotEmpty()) ? $programmes : []
+                'categories' => ($categories->isNotEmpty()) ? $categories : []
             ];
 
             return ['response' => $response, 'code' => 200];
