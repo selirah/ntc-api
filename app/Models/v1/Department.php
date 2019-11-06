@@ -41,17 +41,18 @@ class Department extends Model
 
     public function _get($id)
     {
-        $query = $this->_connectTable()->where('id', '=', $id)->first();
+        $query = $this->_connectTable()
+            ->where($this->table . '.id', '=', $id)
+            ->join('staff', $this->table . '.hod', '=', 'staff.id')
+            ->join('programmes', $this->table . '.programme_id', '=', 'programmes.id')
+            ->select($this->table . '.*', 'staff.staff_id', 'staff.title', 'staff.name', 'staff.phone', 'staff.email',
+                'staff.certificate', 'staff.salary', 'staff.bonus', 'programmes.programme')
+            ->orderByDesc($this->table . '.created_at')
+            ->first();
         return $query;
     }
 
     public function _view($collegeId)
-    {
-        $query = $this->_connectTable()->where('college_id', '=', $collegeId)->get();
-        return $query;
-    }
-
-    public function _getHODs($collegeId)
     {
         $query = $this->_connectTable()
             ->where($this->table . '.college_id', '=', $collegeId)

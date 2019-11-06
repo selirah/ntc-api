@@ -3,15 +3,14 @@
  * Created by PhpStorm.
  * User: selirah
  * Date: 11/5/2019
- * Time: 3:10 PM
+ * Time: 4:16 PM
  */
 
 namespace App\Interfaces\v1;
 
 
-interface IDepartment
+interface ICourse
 {
-
     public function add();
 
     public function update();
@@ -20,5 +19,12 @@ interface IDepartment
 
     public function view();
 
+    public function getWithDepartment();
+
+    public function getWithSemester();
+
     public function delete();
+
+    public function import();
+
 }

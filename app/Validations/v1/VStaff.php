@@ -46,7 +46,7 @@ class VStaff
         if (!$this->_staff->hasFile || empty($this->_staff->sheet) || empty($this->_staff->startRow)) {
             $response = [
                 'error' => true,
-                'message' => 'Make sure you select a file to upload'
+                'message' => 'Required fields: Excel file, sheet number, start row'
             ];
             return ['response' => $response, 'code' => 400];
         }

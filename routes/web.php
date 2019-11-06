@@ -71,6 +71,23 @@ $router->group(['prefix' => 'api/v1'], function ($router) {
         $router->post('import', 'StaffController@import');
     });
 
+    $router->group(['prefix' => 'departments', 'middleware' => 'auth'], function ($router) {
+        $router->post('add', 'DepartmentController@add');
+        $router->put('update/{id}', 'DepartmentController@update');
+        $router->get('get', 'DepartmentController@get');
+        $router->get('view', 'DepartmentController@view');
+    });
+
+    $router->group(['prefix' => 'courses', 'middleware' => 'auth'], function ($router) {
+        $router->post('add', 'CourseController@add');
+        $router->put('update/{id}', 'CourseController@update');
+        $router->get('get', 'CourseController@get');
+        $router->get('view', 'CourseController@view');
+        $router->get('get-department', 'CourseController@getWithDepartment');
+        $router->get('get-semester', 'CourseController@getWithSemester');
+        $router->post('import', 'CourseController@import');
+    });
+
 });
 
 

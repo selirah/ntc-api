@@ -318,7 +318,7 @@ class OStaff implements IStaff
                     && !empty($c['F']) && !empty($c['J']) && !empty($c['K']) && !empty($c['L'])
                     && !empty($c['M'])) {
                     // check if staff already exists in table
-                    $check = $this->_staff->_getWithStaffId($this->staffId);
+                    $check = $this->_staff->_getWithStaffId($c['A']);
                     if ($check) {
                         $duplicates[] = $check->staff_id;
                     } else {
