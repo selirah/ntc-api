@@ -183,7 +183,7 @@ class OStaff implements IStaff
     {
         try {
             // get
-            $staff = $this->_staff->_getWithStaffId($this->staffId);
+            $staff = $this->_staff->_getWithStaffId($this->collegeId, $this->staffId);
 
             $response = [
                 'staff' => ($staff) ? $staff : []
@@ -307,7 +307,7 @@ class OStaff implements IStaff
             // clean the data from the excel sheet
             $cleanData = [];
             for ($row = $this->startRow; $row <= count($sheetData); $row++) {
-                $cleanData[] = $sheetData[$row];
+                $cleanData[] = trim($sheetData[$row]);
             }
 
             $staffData = [];
@@ -318,7 +318,7 @@ class OStaff implements IStaff
                     && !empty($c['F']) && !empty($c['J']) && !empty($c['K']) && !empty($c['L'])
                     && !empty($c['M'])) {
                     // check if staff already exists in table
-                    $check = $this->_staff->_getWithStaffId($c['A']);
+                    $check = $this->_staff->_getWithStaffId($this->collegeId, $c['A']);
                     if ($check) {
                         $duplicates[] = $check->staff_id;
                     } else {

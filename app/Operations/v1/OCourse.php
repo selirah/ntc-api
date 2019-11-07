@@ -217,7 +217,7 @@ class OCourse implements ICourse
                 $cleanData[] = $sheetData[$row];
             }
 
-            $staffData = [];
+            $courseData = [];
             $duplicates = [];
 
             foreach ($cleanData as $c) {
@@ -228,7 +228,7 @@ class OCourse implements ICourse
                     if ($check) {
                         $duplicates[] = $check->course_code;
                     } else {
-                        $staffData[] = [
+                        $courseData[] = [
                             'course_code' => $c['A'],
                             'college_id' => $this->collegeId,
                             'course_name' => $c['B'],
@@ -241,7 +241,7 @@ class OCourse implements ICourse
                     }
                 }
             }
-            $this->_course->_saveBatch($staffData);
+            $this->_course->_saveBatch($courseData);
 
             $courses = $this->_course->_view($this->collegeId);
 

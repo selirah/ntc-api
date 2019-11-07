@@ -43,6 +43,7 @@ class CollegeController extends Controller
         $this->_college->senderId = trim($request->input('sender_id'));
         $this->_college->town = trim($request->input('town'));
         $this->_college->logo = trim($request->input('logo'));
+        $this->_college->studentUrl = trim($request->input('student_url'));
         $this->_college->userId = $request->user()->id;
 
         $response = $this->_college->add();
@@ -61,6 +62,7 @@ class CollegeController extends Controller
         $this->_college->senderId = trim($request->input('sender_id'));
         $this->_college->town = trim($request->input('town'));
         $this->_college->logo = trim($request->input('logo'));
+        $this->_college->studentUrl = trim($request->input('student_url'));
         $this->_college->collegeId = $id;
 
         $response = $this->_college->update();

@@ -12,11 +12,12 @@ class Helper
         return file_get_contents($send);
     }
 
-    public function sendBulkSMS($apiKey, $senderId, array $customer)
+    public function sendBulkSMS($college, array $student)
     {
-        foreach ($customer as $c) {
-            $message = "Hello " . $c['name'] . ", your monthly salary has been sent to your bank with account number " . $c['account_number'];
-            $this->_sendSMS($c['phone'], $message, $senderId, $apiKey);
+        $apiKey = "DnVYnGb276yeMsyooGZata2SR";
+        foreach ($student as $s) {
+            $message = "Hello " . $s['surname'] . ' ' . $s['othernames'] . "\nYour login credentials: \nUsername - " . $s['student_id'] . ", \nPassword - " . $s['password'] . " \nURL - " . $college->student_url . "\nDo not share your credentials!";
+            $this->_sendSMS($s['phone'], $message, $college->sender_id, $apiKey);
         }
     }
 

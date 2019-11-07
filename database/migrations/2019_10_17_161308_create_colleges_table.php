@@ -23,6 +23,7 @@ class CreateCollegesTable extends Migration
             $table->string('phone');
             $table->string('sender_id');
             $table->string('logo')->nullable();
+            $table->string('student_url')->nullable();
             $table->timestamps();
         });
     }

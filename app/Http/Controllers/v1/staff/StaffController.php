@@ -100,6 +100,7 @@ class StaffController extends Controller
     public function getWithStaffID(Request $request)
     {
         $this->_staff->staffId = $request->get('staff_id');
+        $this->_staff->collegeId = $request->user()->college_id;
 
         $response = $this->_staff->getWithStaffId();
         return response()->json($response['response'], $response['code']);

@@ -88,6 +88,24 @@ $router->group(['prefix' => 'api/v1'], function ($router) {
         $router->post('import', 'CourseController@import');
     });
 
+    $router->group(['prefix' => 'students', 'middleware' => 'auth'], function ($router) {
+        $router->post('add', 'StudentController@add');
+        $router->put('update/{id}', 'StudentController@update');
+        $router->get('get', 'StudentController@get');
+        $router->get('view', 'StudentController@view');
+        $router->get('get-student-id', 'StudentController@getWithStudentID');
+        $router->get('get-student-index', 'StudentController@getWithIndexNumber');
+        $router->get('get-student-account', 'StudentController@getWithAccountCode');
+        $router->get('get-students-status', 'StudentController@getWithStatus');
+        $router->get('get-students-programme', 'StudentController@getWithProgramme');
+        $router->get('get-students-department', 'StudentController@getWithDepartment');
+        $router->get('get-students-admission', 'StudentController@getWithAdmissionYear');
+        $router->get('get-students-gender', 'StudentController@getWithGender');
+        $router->get('get-students-mode', 'StudentController@getWithPaymentMode');
+        $router->get('get-students-year', 'StudentController@getWithYear');
+        $router->post('import', 'StudentController@import');
+    });
+
 });
 
 

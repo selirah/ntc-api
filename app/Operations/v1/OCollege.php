@@ -31,6 +31,7 @@ class OCollege implements ICollege
     public $phone;
     public $senderId;
     public $logo;
+    public $studentUrl;
 
     public function __construct(College $college, User $user)
     {
@@ -77,6 +78,7 @@ class OCollege implements ICollege
                 'phone' => Helper::sanitizePhone($this->phone),
                 'sender_id' => $this->senderId,
                 'logo' => $this->logo,
+                'student_url' => $this->studentUrl,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ];
@@ -130,6 +132,7 @@ class OCollege implements ICollege
                 'phone' => Helper::sanitizePhone($this->phone),
                 'sender_id' => $this->senderId,
                 'logo' => $this->logo,
+                'student_url' => $this->studentUrl,
                 'updated_at' => Carbon::now()
             ];
 

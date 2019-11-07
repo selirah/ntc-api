@@ -54,9 +54,11 @@ class Staff extends Model
         return $query;
     }
 
-    public function _getWithStaffId($id)
+    public function _getWithStaffId($collegeId, $id)
     {
-        $query = $this->_connectTable()->where($this->table . '.staff_id', '=', $id)
+        $query = $this->_connectTable()
+            ->where($this->table . '.college_id', '=', $collegeId)
+            ->where($this->table . '.staff_id', '=', $id)
             ->join('staff_category', $this->table . '.staff_category', '=', 'staff_category.id')
             ->join('staff_position', $this->table . '.staff_position', '=', 'staff_position.id')
             ->select($this->table . '.*', 'staff_category.category', 'staff_position.position')
