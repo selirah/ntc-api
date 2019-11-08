@@ -103,6 +103,8 @@ $router->group(['prefix' => 'api/v1'], function ($router) {
         $router->get('get-students-gender', 'StudentController@getWithGender');
         $router->get('get-students-mode', 'StudentController@getWithPaymentMode');
         $router->get('get-students-year', 'StudentController@getWithYear');
+        $router->get('get-students-year-programme', 'StudentController@getWithYearAndProgramme');
+        $router->get('get-students-year-department', 'StudentController@getWithYearAndDepartment');
         $router->post('import', 'StudentController@import');
     });
 

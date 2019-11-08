@@ -174,6 +174,32 @@ class Student extends Model
         return $query;
     }
 
+    public function _getWithYearAndProgramme($collegeId, $admissionYear, $programmeId)
+    {
+        $query = $this->_connectTable()
+            ->where($this->table . '.college_id', '=', $collegeId)
+            ->where($this->table . '.admission_year', '=', $admissionYear)
+            ->where($this->table . '.programme_id', '=', $programmeId)
+            ->join('programmes', $this->table . '.programme_id', '=', 'programmes.id')
+            ->join('departments', $this->table . '.department_id', '=', 'departments.id')
+            ->select($this->table . '.*', 'programmes.programme', 'departments.department')
+            ->get();
+        return $query;
+    }
+
+    public function _getWithYearAndDepartment($collegeId, $admissionYear, $departmentId)
+    {
+        $query = $this->_connectTable()
+            ->where($this->table . '.college_id', '=', $collegeId)
+            ->where($this->table . '.admission_year', '=', $admissionYear)
+            ->where($this->table . '.department_id', '=', $departmentId)
+            ->join('programmes', $this->table . '.programme_id', '=', 'programmes.id')
+            ->join('departments', $this->table . '.department_id', '=', 'departments.id')
+            ->select($this->table . '.*', 'programmes.programme', 'departments.department')
+            ->get();
+        return $query;
+    }
+
     public function _delete($id)
     {
         $this->_connectTable()->delete($id);

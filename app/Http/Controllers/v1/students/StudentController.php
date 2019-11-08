@@ -220,6 +220,33 @@ class StudentController extends Controller
         return response()->json($response['response'], $response['code']);
     }
 
+    // @route  GET api/v1/students/get-students-year-programme?year=&programme_id=
+    // @desc   Get students with year and programme
+    // @access Public
+    public function getWithYearAndProgramme(Request $request)
+    {
+        $this->_student->year = trim($request->get('year'));
+        $this->_student->programmeId = trim($request->get('programme_id'));
+        $this->_student->collegeId = $request->user()->college_id;
+
+        $response = $this->_student->getWithYearAndProgramme();
+        return response()->json($response['response'], $response['code']);
+    }
+
+    // @route  GET api/v1/students/get-students-year-department?year=&department_id=
+    // @desc   Get students with year and department
+    // @access Public
+    public function getWithYearAndDepartment(Request $request)
+    {
+        $this->_student->year = trim($request->get('year'));
+        $this->_student->departmentId = trim($request->get('department_id'));
+        $this->_student->collegeId = $request->user()->college_id;
+
+        $response = $this->_student->getWithYearAndDepartment();
+        return response()->json($response['response'], $response['code']);
+    }
+
+
     // @route  POST api/v1/students/import
     // @desc   Import Students
     // @access Public
@@ -231,6 +258,7 @@ class StudentController extends Controller
         $this->_student->startRow = trim($request->input('start_row'));
         $this->_student->admissionYear = trim($request->input('admission_year'));
         $this->_student->programmeId = trim($request->input('programme_id'));
+        $this->_student->status = env('STUDENT_STATUS_ACTIVE');
 
         if ($this->_student->hasFile) {
             $this->_student->extension = $request->file('excel')->getClientOriginalExtension();

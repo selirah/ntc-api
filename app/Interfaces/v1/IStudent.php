@@ -39,6 +39,10 @@ interface IStudent
 
     public function getWithYear();
 
+    public function getWithYearAndProgramme();
+
+    public function getWithYearAndDepartment();
+
     public function delete();
 
     public function import();
