@@ -20,6 +20,8 @@ class OStaff implements IStaff
 {
     private $_staff;
     private $_validation;
+    private $_category;
+    private $_position;
 
     public $id;
     public $staffId;
@@ -307,7 +309,7 @@ class OStaff implements IStaff
             // clean the data from the excel sheet
             $cleanData = [];
             for ($row = $this->startRow; $row <= count($sheetData); $row++) {
-                $cleanData[] = trim($sheetData[$row]);
+                $cleanData[] = $sheetData[$row];
             }
 
             $staffData = [];
@@ -323,21 +325,21 @@ class OStaff implements IStaff
                         $duplicates[] = $check->staff_id;
                     } else {
                         $staffData[] = [
-                            'staff_id' => $c['A'],
+                            'staff_id' => trim($c['A']),
                             'college_id' => $this->collegeId,
-                            'title' => $c['B'],
-                            'name' => $c['C'],
+                            'title' => trim($c['B']),
+                            'name' => trim($c['C']),
                             'dob' => date('Y-m-d', strtotime($c['D'])),
-                            'staff_category' => $c['E'],
-                            'staff_position' => $c['F'],
-                            'tin_number' => $c['G'],
-                            'ssnit_number' => $c['H'],
-                            'date_commenced' => date('Y-m-d', strtotime($c['I'])),
-                            'email' => $c['J'],
-                            'phone' => Helper::sanitizePhone($c['K']),
-                            'certificate' => $c['L'],
-                            'salary' => $c['M'],
-                            'bonus' => $c['N'],
+                            'staff_category' => trim($c['E']),
+                            'staff_position' => trim($c['F']),
+                            'tin_number' => trim($c['G']),
+                            'ssnit_number' => trim($c['H']),
+                            'date_commenced' => date('Y-m-d', strtotime(trim($c['I']))),
+                            'email' => trim($c['J']),
+                            'phone' => Helper::sanitizePhone(trim($c['K'])),
+                            'certificate' => trim($c['L']),
+                            'salary' => trim($c['M']),
+                            'bonus' => trim($c['N']),
                             'created_at' => Carbon::now(),
                             'updated_at' => Carbon::now()
                         ];

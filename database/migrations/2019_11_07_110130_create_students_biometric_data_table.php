@@ -15,11 +15,11 @@ class CreateStudentsBiometricDataTable extends Migration
     {
         Schema::create('students_biometric_data', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('college_id');
+            $table->integer('college_id')->index();
             $table->string('student_id')->index();
             $table->string('template_key')->unique()->index();
-            $table->string('finger_one')->unique()->index();
-            $table->string('finger_two')->unique()->index();
+            $table->longText('finger_one');
+            $table->longText('finger_two');
             $table->timestamps();
         });
     }

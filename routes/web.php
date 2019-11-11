@@ -108,6 +108,29 @@ $router->group(['prefix' => 'api/v1'], function ($router) {
         $router->post('import', 'StudentController@import');
     });
 
+    $router->group(['prefix' => 'medical-records', 'middleware' => 'auth'], function ($router) {
+        $router->post('add', 'MedicalRecordController@add');
+        $router->put('update/{id}', 'MedicalRecordController@update');
+        $router->get('get', 'MedicalRecordController@get');
+        $router->delete('delete/{id}', 'MedicalRecordController@delete');
+    });
+
+    $router->group(['prefix' => 'staff-biometric', 'middleware' => 'auth'], function ($router) {
+        $router->post('add', 'StaffBiometricController@add');
+        $router->put('update/{id}', 'StaffBiometricController@update');
+        $router->get('get', 'StaffBiometricController@get');
+        $router->get('view', 'StaffBiometricController@view');
+        $router->delete('delete/{id}', 'StaffBiometricController@delete');
+    });
+
+    $router->group(['prefix' => 'students-biometric', 'middleware' => 'auth'], function ($router) {
+        $router->post('add', 'StudentBiometricController@add');
+        $router->put('update/{id}', 'StudentBiometricController@update');
+        $router->get('get', 'StudentBiometricController@get');
+        $router->get('view', 'StudentBiometricController@view');
+        $router->delete('delete/{id}', 'StudentBiometricController@delete');
+    });
+
 });
 
 

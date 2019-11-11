@@ -229,12 +229,12 @@ class OCourse implements ICourse
                         $duplicates[] = $check->course_code;
                     } else {
                         $courseData[] = [
-                            'course_code' => $c['A'],
+                            'course_code' => trim($c['A']),
                             'college_id' => $this->collegeId,
-                            'course_name' => $c['B'],
-                            'department_id' => $c['C'],
-                            'credit_hours' => $c['D'],
-                            'semester' => $c['E'],
+                            'course_name' => trim($c['B']),
+                            'department_id' => trim($c['C']),
+                            'credit_hours' => trim($c['D']),
+                            'semester' => trim($c['E']),
                             'created_at' => Carbon::now(),
                             'updated_at' => Carbon::now()
                         ];
