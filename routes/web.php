@@ -131,6 +131,26 @@ $router->group(['prefix' => 'api/v1'], function ($router) {
         $router->delete('delete/{id}', 'StudentBiometricController@delete');
     });
 
+    $router->group(['prefix' => 'fee-units', 'middleware' => 'auth'], function ($router) {
+        $router->post('add', 'FeeUnitController@add');
+        $router->put('update/{id}', 'FeeUnitController@update');
+        $router->get('get', 'FeeUnitController@get');
+        $router->get('view', 'FeeUnitController@view');
+        $router->delete('delete/{id}', 'FeeUnitController@delete');
+    });
+
+    $router->group(['prefix' => 'fees', 'middleware' => 'auth'], function ($router) {
+        $router->post('add', 'FeeController@add');
+        $router->put('update/{id}', 'FeeController@update');
+        $router->get('get', 'FeeController@get');
+        $router->get('view', 'FeeController@view');
+        $router->get('fees-programme', 'FeeController@getWithProgrammeAndAcademicYear');
+        $router->get('fees-payment-mode', 'FeeController@getWithPaymentModeAndAcademicYear');
+        $router->get('fees-student-type', 'FeeController@getWithStudentTypeAndAcademicYear');
+        $router->get('fees-sum', 'FeeController@getFeeSumGroupByCurrency');
+        $router->delete('delete/{id}', 'FeeController@delete');
+    });
+
 });
 
 

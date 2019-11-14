@@ -50,7 +50,9 @@ class Student extends Model
         $query = $this->_connectTable()->where($this->table . '.id', '=', $id)
             ->join('programmes', $this->table . '.programme_id', '=', 'programmes.id')
             ->join('departments', $this->table . '.department_id', '=', 'departments.id')
-            ->select($this->table . '.*', 'programmes.programme', 'departments.department')
+            ->join('students_status', $this->table . '.status', '=', 'students_status.id')
+            ->join('fee_payment_mode', $this->table . '.payment_mode', '=', 'fee_payment_mode.id')
+            ->select($this->table . '.*', 'programmes.programme', 'departments.department', 'students_status.status', 'fee_payment_mode.mode')
             ->first();
         return $query;
     }
@@ -62,7 +64,9 @@ class Student extends Model
             ->where($this->table . '.student_id', '=', $studentId)
             ->join('programmes', $this->table . '.programme_id', '=', 'programmes.id')
             ->join('departments', $this->table . '.department_id', '=', 'departments.id')
-            ->select($this->table . '.*', 'programmes.programme', 'departments.department')
+            ->join('students_status', $this->table . '.status', '=', 'students_status.id')
+            ->join('fee_payment_mode', $this->table . '.payment_mode', '=', 'fee_payment_mode.id')
+            ->select($this->table . '.*', 'programmes.programme', 'departments.department', 'students_status.status', 'fee_payment_mode.mode')
             ->first();
         return $query;
     }
@@ -74,7 +78,9 @@ class Student extends Model
             ->where($this->table . '.index_number', '=', $indexNumber)
             ->join('programmes', $this->table . '.programme_id', '=', 'programmes.id')
             ->join('departments', $this->table . '.department_id', '=', 'departments.id')
-            ->select($this->table . '.*', 'programmes.programme', 'departments.department')
+            ->join('students_status', $this->table . '.status', '=', 'students_status.id')
+            ->join('fee_payment_mode', $this->table . '.payment_mode', '=', 'fee_payment_mode.id')
+            ->select($this->table . '.*', 'programmes.programme', 'departments.department', 'students_status.status', 'fee_payment_mode.mode')
             ->first();
         return $query;
     }
@@ -86,7 +92,9 @@ class Student extends Model
             ->where($this->table . '.account_code', '=', $accountCode)
             ->join('programmes', $this->table . '.programme_id', '=', 'programmes.id')
             ->join('departments', $this->table . '.department_id', '=', 'departments.id')
-            ->select($this->table . '.*', 'programmes.programme', 'departments.department')
+            ->join('students_status', $this->table . '.status', '=', 'students_status.id')
+            ->join('fee_payment_mode', $this->table . '.payment_mode', '=', 'fee_payment_mode.id')
+            ->select($this->table . '.*', 'programmes.programme', 'departments.department', 'students_status.status', 'fee_payment_mode.mode')
             ->first();
         return $query;
     }
@@ -97,7 +105,9 @@ class Student extends Model
             ->where($this->table . '.college_id', '=', $collegeId)
             ->join('programmes', $this->table . '.programme_id', '=', 'programmes.id')
             ->join('departments', $this->table . '.department_id', '=', 'departments.id')
-            ->select($this->table . '.*', 'programmes.programme', 'departments.department')
+            ->join('students_status', $this->table . '.status', '=', 'students_status.id')
+            ->join('fee_payment_mode', $this->table . '.payment_mode', '=', 'fee_payment_mode.id')
+            ->select($this->table . '.*', 'programmes.programme', 'departments.department', 'students_status.status', 'fee_payment_mode.mode')
             ->get();
         return $query;
     }
@@ -109,7 +119,9 @@ class Student extends Model
             ->where($this->table . '.status', '=', $status)
             ->join('programmes', $this->table . '.programme_id', '=', 'programmes.id')
             ->join('departments', $this->table . '.department_id', '=', 'departments.id')
-            ->select($this->table . '.*', 'programmes.programme', 'departments.department')
+            ->join('students_status', $this->table . '.status', '=', 'students_status.id')
+            ->join('fee_payment_mode', $this->table . '.payment_mode', '=', 'fee_payment_mode.id')
+            ->select($this->table . '.*', 'programmes.programme', 'departments.department', 'students_status.status', 'fee_payment_mode.mode')
             ->get();
         return $query;
     }
@@ -121,7 +133,9 @@ class Student extends Model
             ->where($this->table . '.programme_id', '=', $programmeId)
             ->join('programmes', $this->table . '.programme_id', '=', 'programmes.id')
             ->join('departments', $this->table . '.department_id', '=', 'departments.id')
-            ->select($this->table . '.*', 'programmes.programme', 'departments.department')
+            ->join('students_status', $this->table . '.status', '=', 'students_status.id')
+            ->join('fee_payment_mode', $this->table . '.payment_mode', '=', 'fee_payment_mode.id')
+            ->select($this->table . '.*', 'programmes.programme', 'departments.department', 'students_status.status', 'fee_payment_mode.mode')
             ->get();
         return $query;
     }
@@ -133,7 +147,9 @@ class Student extends Model
             ->where($this->table . '.department_id', '=', $departmentId)
             ->join('programmes', $this->table . '.programme_id', '=', 'programmes.id')
             ->join('departments', $this->table . '.department_id', '=', 'departments.id')
-            ->select($this->table . '.*', 'programmes.programme', 'departments.department')
+            ->join('students_status', $this->table . '.status', '=', 'students_status.id')
+            ->join('fee_payment_mode', $this->table . '.payment_mode', '=', 'fee_payment_mode.id')
+            ->select($this->table . '.*', 'programmes.programme', 'departments.department', 'students_status.status', 'fee_payment_mode.mode')
             ->get();
         return $query;
     }
@@ -145,7 +161,9 @@ class Student extends Model
             ->where($this->table . '.admission_year', '=', $admissionYear)
             ->join('programmes', $this->table . '.programme_id', '=', 'programmes.id')
             ->join('departments', $this->table . '.department_id', '=', 'departments.id')
-            ->select($this->table . '.*', 'programmes.programme', 'departments.department')
+            ->join('students_status', $this->table . '.status', '=', 'students_status.id')
+            ->join('fee_payment_mode', $this->table . '.payment_mode', '=', 'fee_payment_mode.id')
+            ->select($this->table . '.*', 'programmes.programme', 'departments.department', 'students_status.status', 'fee_payment_mode.mode')
             ->get();
         return $query;
     }
@@ -157,7 +175,9 @@ class Student extends Model
             ->where($this->table . '.gender', '=', $gender)
             ->join('programmes', $this->table . '.programme_id', '=', 'programmes.id')
             ->join('departments', $this->table . '.department_id', '=', 'departments.id')
-            ->select($this->table . '.*', 'programmes.programme', 'departments.department')
+            ->join('students_status', $this->table . '.status', '=', 'students_status.id')
+            ->join('fee_payment_mode', $this->table . '.payment_mode', '=', 'fee_payment_mode.id')
+            ->select($this->table . '.*', 'programmes.programme', 'departments.department', 'students_status.status', 'fee_payment_mode.mode')
             ->get();
         return $query;
     }
@@ -169,7 +189,9 @@ class Student extends Model
             ->where($this->table . '.payment_mode', '=', $paymentMode)
             ->join('programmes', $this->table . '.programme_id', '=', 'programmes.id')
             ->join('departments', $this->table . '.department_id', '=', 'departments.id')
-            ->select($this->table . '.*', 'programmes.programme', 'departments.department')
+            ->join('students_status', $this->table . '.status', '=', 'students_status.id')
+            ->join('fee_payment_mode', $this->table . '.payment_mode', '=', 'fee_payment_mode.id')
+            ->select($this->table . '.*', 'programmes.programme', 'departments.department', 'students_status.status', 'fee_payment_mode.mode')
             ->get();
         return $query;
     }
@@ -182,7 +204,9 @@ class Student extends Model
             ->where($this->table . '.programme_id', '=', $programmeId)
             ->join('programmes', $this->table . '.programme_id', '=', 'programmes.id')
             ->join('departments', $this->table . '.department_id', '=', 'departments.id')
-            ->select($this->table . '.*', 'programmes.programme', 'departments.department')
+            ->join('students_status', $this->table . '.status', '=', 'students_status.id')
+            ->join('fee_payment_mode', $this->table . '.payment_mode', '=', 'fee_payment_mode.id')
+            ->select($this->table . '.*', 'programmes.programme', 'departments.department', 'students_status.status', 'fee_payment_mode.mode')
             ->get();
         return $query;
     }
@@ -195,7 +219,9 @@ class Student extends Model
             ->where($this->table . '.department_id', '=', $departmentId)
             ->join('programmes', $this->table . '.programme_id', '=', 'programmes.id')
             ->join('departments', $this->table . '.department_id', '=', 'departments.id')
-            ->select($this->table . '.*', 'programmes.programme', 'departments.department')
+            ->join('students_status', $this->table . '.status', '=', 'students_status.id')
+            ->join('fee_payment_mode', $this->table . '.payment_mode', '=', 'fee_payment_mode.id')
+            ->select($this->table . '.*', 'programmes.programme', 'departments.department', 'students_status.status', 'fee_payment_mode.mode')
             ->get();
         return $query;
     }
